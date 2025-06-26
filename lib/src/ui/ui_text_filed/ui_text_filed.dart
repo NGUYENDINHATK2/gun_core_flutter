@@ -87,7 +87,7 @@ class _UITextFieldState extends State<UITextField> {
       onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
       enabled: widget.isDisabled == false,
       focusNode: widget.focusNode,
-      obscureText: widget.obscureText ?? false,
+      obscureText: _obscureText,
       style: TextStyle(
         fontSize: widget.fontSize ?? 14.sp,
         color: widget.textColor ?? AppColors.fgNeutralEmphasis,
