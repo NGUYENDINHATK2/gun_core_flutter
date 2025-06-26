@@ -91,7 +91,7 @@ class AppColors {
 
   static const Color bgDangerSolidDefault = Color(BaseColors.red500);
   static const Color bgDangerSolidHover = Color(BaseColors.red400);
-  static const Color bgDangerSolidFocus = Color(BaseColors.red900);
+  static const Color bgDangerSolidFocus = Color.fromARGB(255, 253, 0, 0);
 
   static const Color bgNeutralLightDefault = Color(BaseColors.gray50);
   static const Color fbNeutralNormal = Color(BaseColors.gray500);
