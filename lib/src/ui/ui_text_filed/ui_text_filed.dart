@@ -51,10 +51,12 @@ class UITextField extends StatefulWidget {
 
 class _UITextFieldState extends State<UITextField> {
   bool _isFocus = false;
+   late bool _obscureText;
 
   @override
   void initState() {
     super.initState();
+    _obscureText = widget.obscureText ?? false;
     widget.focusNode?.addListener(() {
       setState(() {
         _isFocus = widget.focusNode!.hasFocus;
@@ -114,6 +116,19 @@ class _UITextFieldState extends State<UITextField> {
             width: widget.borderWidth ?? 1.w,
           ),
         ),
+          suffixIcon: widget.obscureText == true
+            ? IconButton(
+                icon: Icon(
+                  _obscureText ? Icons.visibility_off : Icons.visibility,
+                  color: AppColors.fgNeutralSubtle,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+              )
+            : null,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.sp),
           borderSide: BorderSide(
