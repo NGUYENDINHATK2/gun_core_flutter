@@ -16,6 +16,10 @@ class BaseColors {
   static const red400 = 0xFFFF2E68;
   static const red500 = 0xFFE1024F;
   static const red600 = 0xFFD1003F;
+  static const red700 = 0xFFB1003A;
+  static const red800 = 0xFF8F002A;
+  static const red900 = 0xFF6D001A;
+  static const red1000 = 0xFF4B000A;
 
   static const gray50 = 0xFFF2F5F7;
   static const gray100 = 0xFFE7EAED;
@@ -87,7 +91,7 @@ class AppColors {
 
   static const Color bgDangerSolidDefault = Color(BaseColors.red500);
   static const Color bgDangerSolidHover = Color(BaseColors.red400);
-  static const Color bgDangerSolidFocus = Color(BaseColors.red600);
+  static const Color bgDangerSolidFocus = Color(BaseColors.red900);
 
   static const Color bgNeutralLightDefault = Color(BaseColors.gray50);
   static const Color fbNeutralNormal = Color(BaseColors.gray500);

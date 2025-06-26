@@ -104,21 +104,21 @@ class _UITextFieldState extends State<UITextField> {
           borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.sp),
           borderSide: BorderSide(
             color: borderCol,
-            width: widget.borderWidth ?? 2.w,
+            width: widget.borderWidth ?? 1.w,
           ),
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.sp),
           borderSide: BorderSide(
             color: borderCol,
-            width: widget.borderWidth ?? 2.w,
+            width: widget.borderWidth ?? 1.w,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.sp),
           borderSide: BorderSide(
             color: focusedBorderCol,
-            width: widget.borderWidth ?? 2.w,
+            width: widget.borderWidth ?? 1.w,
           ),
         ),
       ),
