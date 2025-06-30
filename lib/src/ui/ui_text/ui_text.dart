@@ -4,7 +4,8 @@ class UIText extends StatefulWidget {
   final String text;
   final TextStyle? textStyle;
   final int? maxLines;
-  const UIText({super.key, required this.text, this.textStyle, this.maxLines});
+  final TextOverflow? overflow;
+  const UIText({super.key, required this.text, this.textStyle, this.maxLines, this.overflow});
 
   @override
   State<UIText> createState() => _UITextState();
@@ -20,7 +21,8 @@ class _UITextState extends State<UIText> {
       );
     }
     return Text(
-      widget.text,
+      widget.text, 
+      overflow: widget.overflowss,
       style: effectiveTextStyle,
       maxLines: widget.maxLines,
     );
