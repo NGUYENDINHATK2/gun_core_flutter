@@ -22,7 +22,7 @@ class _UITextState extends State<UIText> {
     }
     return Text(
       widget.text, 
-      overflow: widget.overflowss,
+      overflow: widget.overflowss ?? TextOverflow.ellipsis,
       style: effectiveTextStyle,
       maxLines: widget.maxLines,
     );
