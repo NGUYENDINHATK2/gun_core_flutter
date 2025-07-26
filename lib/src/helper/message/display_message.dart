@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gun_core_flutter/gun_core_flutter.dart';
-
+import 'package:gun_core_flutter/src/theme/app_colors.dart';
 class DisplayMessage {
 
   static void errorMessage(String message,BuildContext context) {
