@@ -5,3 +5,5 @@ export '../entity/ui_field.dart';
 export '../entity/tab_view.dart';
 export '../entity/option_item.dart';
 export '../entity/drawer_item.dart';
+export './device_info.dart';
+export './sync.dart';
