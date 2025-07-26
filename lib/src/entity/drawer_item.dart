@@ -9,6 +9,8 @@ class DrawerItemEntity {
   final IconData? icon;
   final String? routeName;
   final List<String>? routerActive;
+  final Widget? iconActive;
+  final Widget? iconInactive;
 
-  DrawerItemEntity({required this.name, required this.type, this.children, this.icon, this.routeName, this.routerActive});
+  DrawerItemEntity({required this.name, required this.type, this.children, this.icon, this.routeName, this.routerActive, this.iconActive, this.iconInactive});
 }
