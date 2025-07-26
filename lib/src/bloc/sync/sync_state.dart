@@ -1,4 +1,5 @@
 import 'package:gun_core_flutter/src/enums/sync.dart';
+import 'package:gun_core_flutter/src/enums/media.dart';
 import 'package:gun_core_flutter/src/entity/sync.dart';
 abstract class SyncState {}
 
