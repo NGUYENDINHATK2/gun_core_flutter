@@ -11,7 +11,7 @@ enum EMediaType {
   document, // This is not used in the app, but kept for future use
   unknown,
   audio,
-  application, // Added for audio files
+  application
 }
 
 final mediaValues = EnumValues({
@@ -87,8 +87,8 @@ enum EMediaCategory {
   audio,
   contact,
   document,
-  application
-  unknown,
+  application,
+  unknown
 }
 
 extension EMediaCategoryExt on EMediaCategory {
