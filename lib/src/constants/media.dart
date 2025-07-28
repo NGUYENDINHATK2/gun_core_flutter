@@ -1,5 +1,6 @@
 class MediaFileAccess {
   static const String contactInfo = "contact_info";
+  static const String systemList = "systemList";
   static List<String> get mediaImageExtensions => [
     // Bitmap formats
     "bmp",
