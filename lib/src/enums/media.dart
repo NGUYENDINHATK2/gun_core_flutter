@@ -103,7 +103,7 @@ extension EMediaCategoryExt on EMediaCategory {
       case EMediaCategory.audio:
         return 'AUDIO';
       case EMediaCategory.document:
-        return 'DOCUMENT';retur
+        return 'DOCUMENT';
       case EMediaCategory.application:
         return 'APPLICATION';
       case EMediaCategory.unknown:
