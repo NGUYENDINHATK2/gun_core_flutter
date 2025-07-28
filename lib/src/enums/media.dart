@@ -11,6 +11,7 @@ enum EMediaType {
   document, // This is not used in the app, but kept for future use
   unknown,
   audio,
+  application, // Added for audio files
 }
 
 final mediaValues = EnumValues({
@@ -23,6 +24,7 @@ final mediaValues = EnumValues({
   'document': EMediaType.document, // Not used in the app
   'unknown': EMediaType.unknown,
   'audio': EMediaType.audio,
+  'application': EMediaType.application, // Added for audio files
 });
 
 extension EMediaExtension on EMediaType {
@@ -46,6 +48,8 @@ extension EMediaExtension on EMediaType {
         return 'document';
       case EMediaType.audio:
         return 'audio';
+      case EMediaType.application:
+        return 'application';
     }
   }
 
@@ -67,7 +71,9 @@ extension EMediaExtension on EMediaType {
         return 64;
       case EMediaType.calendar:
         return 16;
-        default:
+      case EMediaType.application:
+        return 64;
+      default:
         return 128;
 
     }
@@ -81,6 +87,7 @@ enum EMediaCategory {
   audio,
   contact,
   document,
+  application
   unknown,
 }
 
@@ -96,7 +103,9 @@ extension EMediaCategoryExt on EMediaCategory {
       case EMediaCategory.audio:
         return 'AUDIO';
       case EMediaCategory.document:
-        return 'DOCUMENT';
+        return 'DOCUMENT';retur
+      case EMediaCategory.application:
+        return 'APPLICATION';
       case EMediaCategory.unknown:
         return 'UNKNOWN';
     }
@@ -114,6 +123,8 @@ extension EMediaCategoryExt on EMediaCategory {
         return EMediaCategory.audio;
       case 'DOCUMENT':
         return EMediaCategory.document;
+      case 'APPLICATION':
+        return EMediaCategory.application;
       default:
         return EMediaCategory.unknown;
     }
