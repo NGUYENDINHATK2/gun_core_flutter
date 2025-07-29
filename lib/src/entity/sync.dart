@@ -4,6 +4,7 @@ class SyncEntity {
   final SyncItemEntity audios;
   final SyncItemEntity documents;
   final SyncItemEntity contact;
+  final SyncItemEntity setting;
 
   SyncEntity({
     required this.images,
@@ -11,6 +12,7 @@ class SyncEntity {
     required this.audios,
     required this.documents,
     required this.contact,
+    required this.setting,
   });
 
   copyWith({
@@ -19,6 +21,7 @@ class SyncEntity {
     SyncItemEntity? audios,
     SyncItemEntity? documents,
     SyncItemEntity? contact,
+    SyncItemEntity? setting,
   }) {
     return SyncEntity(
       images: images ?? this.images,
@@ -26,6 +29,7 @@ class SyncEntity {
       audios: audios ?? this.audios,
       documents: documents ?? this.documents,
       contact: contact ?? this.contact,
+      setting: setting ?? this.setting,
     );
   }
 
