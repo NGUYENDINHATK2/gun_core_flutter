@@ -6,13 +6,15 @@ import 'package:gun_core_flutter/src/ui/ui_single_select/entity/single_select_op
 class UISingleSelect<T> extends StatefulWidget {
   final T? selected;
   final List<T>? options;
-  final Widget Function(T item) builderSelected;
+  final Widget Function(T? item) builderSelected;
+  final Widget? noSelectedWidget;
   final Widget Function({SingleSelectOptionEntity<T>? option})? builderOption;
   final Function(T item)? onSelected;
   final double? height;
   const UISingleSelect({
     super.key,
     required this.builderSelected,
+    this.noSelectedWidget,
     this.selected,
     this.options = const [],
     this.height,
@@ -106,7 +108,25 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
       onTap: () {
         _showBottomSheet(context);
       },
-      child: widget.builderSelected(widget.selected as T),
+      child: widget.selected != null
+          ? widget.builderSelected(widget.selected as T)
+          : widget.noSelectedWidget ??
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Center(
+                child: UIText(
+                  text: "Select an option",
+                  textStyle: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey[600],
+                  ),
+                ),
+              ),
+            ),
     );
   }
 }
