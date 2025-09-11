@@ -46,7 +46,11 @@ class SyncSuccessState extends SyncState {
 
 class SyncPausedState extends SyncState {
   final SyncEntity syncEntity;
+  final Map<EMediaType, Map<String, ESyncStatus>> syncItems;
 
-  SyncPausedState({required this.syncEntity});
+  SyncPausedState({
+    required this.syncEntity,
+    Map<EMediaType, Map<String, ESyncStatus>>? syncItems = const {},
+  }): syncItems = syncItems ?? <EMediaType, Map<String, ESyncStatus>>{};
 }
 
