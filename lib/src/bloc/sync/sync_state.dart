@@ -43,3 +43,10 @@ class SyncSuccessState extends SyncState {
 
   SyncSuccessState({required this.syncEntity});
 }
+
+class SyncPausedState extends SyncState {
+  final SyncEntity syncEntity;
+
+  SyncPausedState({required this.syncEntity});
+}
+
