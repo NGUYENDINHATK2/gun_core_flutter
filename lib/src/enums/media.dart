@@ -88,6 +88,7 @@ enum EMediaCategory {
   contact,
   document,
   application,
+  calendar,
   unknown
 }
 
@@ -106,6 +107,8 @@ extension EMediaCategoryExt on EMediaCategory {
         return 'DOCUMENT';
       case EMediaCategory.application:
         return 'APPLICATION';
+      case EMediaCategory.calendar:
+        return 'CALENDAR';
       case EMediaCategory.unknown:
         return 'UNKNOWN';
     }
@@ -125,6 +128,8 @@ extension EMediaCategoryExt on EMediaCategory {
         return EMediaCategory.document;
       case 'APPLICATION':
         return EMediaCategory.application;
+      case 'CALENDAR':
+        return EMediaCategory.calendar;
       default:
         return EMediaCategory.unknown;
     }
