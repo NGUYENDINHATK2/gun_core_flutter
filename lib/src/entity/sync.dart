@@ -5,7 +5,7 @@ class SyncEntity {
   final SyncItemEntity documents;
   final SyncItemEntity contact;
   final SyncItemEntity setting;
-  final SyncItemEntity calendar
+  final SyncItemEntity calendar;
 
   SyncEntity({
     required this.images,
