@@ -5,6 +5,7 @@ class SyncEntity {
   final SyncItemEntity documents;
   final SyncItemEntity contact;
   final SyncItemEntity setting;
+  final SyncItemEntity calendar
 
   SyncEntity({
     required this.images,
@@ -13,6 +14,7 @@ class SyncEntity {
     required this.documents,
     required this.contact,
     required this.setting,
+    required this.calendar,
   });
 
   copyWith({
@@ -22,6 +24,7 @@ class SyncEntity {
     SyncItemEntity? documents,
     SyncItemEntity? contact,
     SyncItemEntity? setting,
+    SyncItemEntity? calendar,
   }) {
     return SyncEntity(
       images: images ?? this.images,
@@ -30,6 +33,7 @@ class SyncEntity {
       documents: documents ?? this.documents,
       contact: contact ?? this.contact,
       setting: setting ?? this.setting,
+      calendar: calendar ?? this.calendar,
     );
   }
 
