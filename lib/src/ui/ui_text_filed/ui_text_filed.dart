@@ -11,7 +11,7 @@ class UITextField extends StatefulWidget {
   final bool? isDisabled;
   final bool? obscureText;
   final EdgeInsetsGeometry? contentPadding;
-
+  final Widget? suffixIcon;
   final double? fontSize;
   final double? borderRadius;
   final double? borderWidth;
@@ -43,6 +43,7 @@ class UITextField extends StatefulWidget {
     this.borderColor,
     this.errorBorderColor,
     this.focusBorderColor,
+    this.suffixIcon,
   });
 
   @override
@@ -128,7 +129,7 @@ class _UITextFieldState extends State<UITextField> {
                   });
                 },
               )
-            : null,
+            : widget.suffixIcon,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.sp),
           borderSide: BorderSide(
