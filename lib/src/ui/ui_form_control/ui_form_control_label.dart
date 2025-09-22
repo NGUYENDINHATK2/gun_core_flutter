@@ -8,28 +8,45 @@ class UIFormControlLabel extends StatefulWidget {
   final Color? color;
   final double? fontSize;
   final FontWeight? fontWeight;
+  final bool? isRequired;
   const UIFormControlLabel({
     super.key,
     required this.label,
     this.color = AppColors.fgNeutralEmphasis,
     this.fontSize = 14,
     this.fontWeight = FontWeight.w600,
+    this.isRequired = false,
   });
 
   @override
   State<UIFormControlLabel> createState() => _UIFormControlLabelState();
 }
-
 class _UIFormControlLabelState extends State<UIFormControlLabel> {
   @override
   Widget build(BuildContext context) {
-    return UIText(
-      text: widget.label,
-      textStyle: TextStyle(
-          color: widget.color,
-          fontSize: widget.fontSize?.sp ?? 14.sp,
-          fontWeight: widget.fontWeight ?? FontWeight.w600
-      ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        UIText(
+          text: widget.label,
+          textStyle: TextStyle(
+              color: widget.color,
+              fontSize: widget.fontSize?.sp ?? 14.sp,
+              fontWeight: widget.fontWeight ?? FontWeight.w600
+          ),
+        )
+        if (widget.isRequired == true) ...[
+          SizedBox(width: 4.w),
+          UIText(
+            text: '*',
+            textStyle: TextStyle(
+                color: Colors.red,
+                fontSize: widget.fontSize?.sp ?? 14.sp,
+                fontWeight: widget.fontWeight ?? FontWeight.w600
+            ),
+          )
+        ],
+      ],
     );
   }
 }
