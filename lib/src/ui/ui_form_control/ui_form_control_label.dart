@@ -34,7 +34,7 @@ class _UIFormControlLabelState extends State<UIFormControlLabel> {
               fontSize: widget.fontSize?.sp ?? 14.sp,
               fontWeight: widget.fontWeight ?? FontWeight.w600
           ),
-        )
+        ),
         if (widget.isRequired == true) ...[
           SizedBox(width: 4.w),
           UIText(
