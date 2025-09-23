@@ -24,7 +24,8 @@ class UITextField extends StatefulWidget {
   final Color? errorBorderColor;
   final Color? focusBorderColor;
   final TextEditingController? controller;
-
+  final TextAlign? textAlign;
+  final List<TextInputFormatter>? inputFormatters;
   const UITextField({
     super.key,
     this.initialValue,
@@ -48,6 +49,8 @@ class UITextField extends StatefulWidget {
     this.suffixIcon,
     this.keyboardType,
     this.controller,
+    this.textAlign,
+    this.inputFormatters,
   });
 
   @override
@@ -86,6 +89,8 @@ class _UITextFieldState extends State<UITextField> {
         : (widget.errorBorderColor ?? AppColors.bgDangerSolidFocus);
 
     return TextFormField(
+      textAlign: widget.textAlign ?? TextAlign.start,
+      inputFormatters: widget.inputFormatters,
       controller: widget.controller,
       cursorColor: widget.textColor ?? AppColors.fgNeutralEmphasis,
       initialValue: widget.initialValue,
