@@ -20,6 +20,7 @@ class UITextField extends StatefulWidget {
   final Color? hintColor;
   final Color? textColor;
   final Color? borderColor;
+  final TextInputType? keyboardType;
   final Color? errorBorderColor;
   final Color? focusBorderColor;
 
@@ -44,6 +45,7 @@ class UITextField extends StatefulWidget {
     this.errorBorderColor,
     this.focusBorderColor,
     this.suffixIcon,
+    this.keyboardType,
   });
 
   @override
@@ -89,6 +91,7 @@ class _UITextFieldState extends State<UITextField> {
       enabled: widget.isDisabled == false,
       focusNode: widget.focusNode,
       obscureText: _obscureText,
+      keyboardType: widget.keyboardType,
       style: TextStyle(
         fontSize: widget.fontSize ?? 14.sp,
         color: widget.textColor ?? AppColors.fgNeutralEmphasis,
