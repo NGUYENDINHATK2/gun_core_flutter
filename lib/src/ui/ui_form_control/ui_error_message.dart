@@ -25,6 +25,7 @@ class _UIErrorMessageState extends State<UIErrorMessage> {
   Widget build(BuildContext context) {
     return UIText(
       text: widget.message ?? '',
+      maxLines: 10,
       textStyle: TextStyle(
           color: widget.color,
           fontSize: widget.fontSize?.sp ?? 14.sp,
