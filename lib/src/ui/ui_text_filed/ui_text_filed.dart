@@ -23,6 +23,7 @@ class UITextField extends StatefulWidget {
   final TextInputType? keyboardType;
   final Color? errorBorderColor;
   final Color? focusBorderColor;
+  final TextEditingController? controller;
 
   const UITextField({
     super.key,
@@ -46,6 +47,7 @@ class UITextField extends StatefulWidget {
     this.focusBorderColor,
     this.suffixIcon,
     this.keyboardType,
+    this.controller,
   });
 
   @override
@@ -84,6 +86,7 @@ class _UITextFieldState extends State<UITextField> {
         : (widget.errorBorderColor ?? AppColors.bgDangerSolidFocus);
 
     return TextFormField(
+      controller: widget.controller,
       cursorColor: widget.textColor ?? AppColors.fgNeutralEmphasis,
       initialValue: widget.initialValue,
       onChanged: widget.onChanged,
