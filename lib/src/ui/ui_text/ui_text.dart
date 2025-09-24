@@ -5,7 +5,8 @@ class UIText extends StatefulWidget {
   final TextStyle? textStyle;
   final int? maxLines;
   final TextOverflow? overflow;
-  const UIText({super.key, required this.text, this.textStyle, this.maxLines, this.overflow});
+  final TextAlign? textAlign;
+  const UIText({super.key, required this.text, this.textStyle, this.maxLines, this.overflow, this.textAlign});
 
   @override
   State<UIText> createState() => _UITextState();
@@ -21,7 +22,8 @@ class _UITextState extends State<UIText> {
       );
     }
     return Text(
-      widget.text, 
+      widget.text,
+      textAlign: widget.textAlign ?? TextAlign.start,
       overflow: widget.overflow ?? TextOverflow.ellipsis,
       style: effectiveTextStyle,
       maxLines: widget.maxLines,
