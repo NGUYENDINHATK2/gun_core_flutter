@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 class BaseColors {
   static const white = 0xFFFFFFFF;
 
-  static const brand100 = 0xFFE1F8F5;
-  static const brand200 = 0xFFD1F0ED;
-  static const brand300 = 0xFFB9E8E4;
-  static const brand400 = 0xFF33BBB2;
-  static const brand500 = 0xFF00AA9F;
-  static const brand600 = 0xFF0AA095;
+static const brand100 = 0xFFF0F8EB; // #F0F8EB
+static const brand200 = 0xFFD6EBC7; // #D6EBC7
+static const brand300 = 0xFFB2DA96; // #B2DA96
+static const brand400 = 0xFF89C55F; // #89C55F
+static const brand500 = 0xFF74C03E; // #74C03E
+static const brand600 = 0xFF68B82F; // #68B82F 
+static const brand700 = 0xFF5EA82A; // #5EA82A
 
   static const red100 = 0xFFFFE1E7;
   static const red200 = 0xFFFFC8D6;
