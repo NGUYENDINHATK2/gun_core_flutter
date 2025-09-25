@@ -29,7 +29,7 @@ class _UIErrorMessageState extends State<UIErrorMessage> {
       textStyle: TextStyle(
           color: widget.color,
           fontSize: widget.fontSize?.sp ?? 14.sp,
-          fontWeight: widget.fontWeight ?? FontWeight.w600
+          fontWeight: widget.fontWeight ?? FontWeight.w500
       ),
     );
   }
