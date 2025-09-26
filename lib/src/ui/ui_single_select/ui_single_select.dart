@@ -48,58 +48,64 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                margin: EdgeInsets.only(top: 12.h),
-                width: 60.w,
-                height: 5.h,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(100.r),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 20.w),
-                child: UIText(
-                  text: widget.title ?? 'Select an option',
-                  textStyle: TextStyle(
-                    fontFamily: 'NotoSansJP',
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.fgNeutralHighEmphasis,
-                  ),
-                ),
-              ),
-              Container(
                 constraints: BoxConstraints(
                   maxHeight: widget.height ?? MediaQuery.of(context).size.height * 0.5,
                 ),
                 color: Colors.white,
-                child: ListView.builder(
-                  controller: _scrollController,
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: widget.options?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final item = widget.options![index];
-                    final key = _itemKeys[index];
-                    return GestureDetector(
-                      key: key,
-                      onTap: () {
-                        widget.onSelected?.call(item);
-                        Navigator.pop(context);
-                      },
-                      child: widget.builderOption != null
-                          ? widget.builderOption!(
-                        option: SingleSelectOptionEntity<T>(
-                          item: item,
-                          isSelected: widget.selected == item,
-                        ),
-                      )
-                          : ListTile(
-                        title: UIText(text: item.toString()
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: 12.h),
+                      width: 60.w,
+                      height: 5.h,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade300,
+                        borderRadius: BorderRadius.circular(100.r),
+                      ),
+                    ),
+                    widget.title != null ? Container(
+                      padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 20.w),
+                      child: UIText(
+                        text: widget.title ?? 'Select an option',
+                        textStyle: TextStyle(
+                          fontFamily: 'NotoSansJP',
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.fgNeutralHighEmphasis,
                         ),
                       ),
-                    );
-                  },
+                    ) : Container(),
+                    Expanded(
+                      child: ListView.builder(
+                        controller: _scrollController,
+                        shrinkWrap: true,
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: widget.options?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          final item = widget.options![index];
+                          final key = _itemKeys[index];
+                          return GestureDetector(
+                            key: key,
+                            onTap: () {
+                              widget.onSelected?.call(item);
+                              Navigator.pop(context);
+                            },
+                            child: widget.builderOption != null
+                                ? widget.builderOption!(
+                              option: SingleSelectOptionEntity<T>(
+                                item: item,
+                                isSelected: widget.selected == item,
+                              ),
+                            )
+                                : ListTile(
+                              title: UIText(text: item.toString()
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -138,22 +144,22 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
       child: widget.selected != null
           ? widget.builderSelected(widget.selected as T)
           : widget.noSelectedWidget ??
-            Container(
-              padding: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Center(
-                child: UIText(
-                  text: "Select an option",
-                  textStyle: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey[600],
-                  ),
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Center(
+              child: UIText(
+                text: "Select an option",
+                textStyle: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey[600],
                 ),
               ),
             ),
+          ),
     );
   }
 }
