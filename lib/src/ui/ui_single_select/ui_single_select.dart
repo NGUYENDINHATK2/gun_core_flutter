@@ -71,7 +71,6 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
                           fontFamily: 'NotoSansJP',
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w700,
-                          color: AppColors.fgNeutralHighEmphasis,
                         ),
                       ),
                     ) : Container(),
