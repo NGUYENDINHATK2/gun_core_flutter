@@ -36,47 +36,50 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
       _itemKeys[i] = GlobalKey();
     }
 
-    showBarModalBottomSheet(
+    showCupertinoModalBottomSheet(
       context: context,
       useRootNavigator: true,
+      topRadius: Radius.circular(32.r),
       builder: (context) => SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              constraints: BoxConstraints(
-                maxHeight: widget.height ?? MediaQuery.of(context).size.height * 0.5,
-              ),
-              child: ListView.builder(
-                controller: _scrollController,
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                itemCount: widget.options?.length ?? 0,
-                itemBuilder: (context, index) {
-                  final item = widget.options![index];
-                  final key = _itemKeys[index];
-                  return GestureDetector(
-                    key: key,
-                    onTap: () {
-                      widget.onSelected?.call(item);
-                      Navigator.pop(context);
-                    },
-                    child: widget.builderOption != null
-                        ? widget.builderOption!(
-                      option: SingleSelectOptionEntity<T>(
-                        item: item,
-                        isSelected: widget.selected == item,
+        child: Material(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                constraints: BoxConstraints(
+                  maxHeight: widget.height ?? MediaQuery.of(context).size.height * 0.5,
+                ),
+                child: ListView.builder(
+                  controller: _scrollController,
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: widget.options?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    final item = widget.options![index];
+                    final key = _itemKeys[index];
+                    return GestureDetector(
+                      key: key,
+                      onTap: () {
+                        widget.onSelected?.call(item);
+                        Navigator.pop(context);
+                      },
+                      child: widget.builderOption != null
+                          ? widget.builderOption!(
+                        option: SingleSelectOptionEntity<T>(
+                          item: item,
+                          isSelected: widget.selected == item,
+                        ),
+                      )
+                          : ListTile(
+                        title: UIText(text: item.toString()
+                        ),
                       ),
-                    )
-                        : ListTile(
-                          title: UIText(text: item.toString()
-                      ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
