@@ -11,6 +11,7 @@ class UISingleSelect<T> extends StatefulWidget {
   final Widget Function({SingleSelectOptionEntity<T>? option})? builderOption;
   final Function(T item)? onSelected;
   final double? height;
+  final String? title;
   const UISingleSelect({
     super.key,
     required this.builderSelected,
@@ -20,6 +21,7 @@ class UISingleSelect<T> extends StatefulWidget {
     this.height,
     this.builderOption,
     this.onSelected,
+    this.title,
   });
 
   @override
@@ -46,9 +48,31 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
+                margin: EdgeInsets.only(top: 12.h),
+                width: 60.w,
+                height: 5.h,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                  borderRadius: BorderRadius.circular(100.r),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 20.w),
+                child: UIText(
+                  text: widget.title ?? 'Select an option',
+                  textStyle: TextStyle(
+                    fontFamily: 'NotoSansJP',
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.fgNeutralHighEmphasis,
+                  ),
+                ),
+              ),
+              Container(
                 constraints: BoxConstraints(
                   maxHeight: widget.height ?? MediaQuery.of(context).size.height * 0.5,
                 ),
+                color: Colors.white,
                 child: ListView.builder(
                   controller: _scrollController,
                   shrinkWrap: true,
