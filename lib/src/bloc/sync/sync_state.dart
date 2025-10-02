@@ -40,8 +40,24 @@ class SyncUploadingState extends SyncState {
 
 class SyncSuccessState extends SyncState {
   final SyncEntity syncEntity;
+  final Map<EMediaType, Map<String, ESyncStatus>> syncItems;
 
-  SyncSuccessState({required this.syncEntity});
+  SyncSuccessState({
+    required this.syncEntity,
+    Map<EMediaType, Map<String, ESyncStatus>>? syncItems = const {},
+  }): syncItems = syncItems ?? <EMediaType, Map<String, ESyncStatus>>{};
+
+
+  SyncSuccessState copyWith({
+    SyncEntity? syncEntity,
+    Map<EMediaType, Map<String, ESyncStatus>>? syncItems,
+  }) {
+    return SyncSuccessState(
+      syncEntity: syncEntity ?? this.syncEntity,
+      syncItems: syncItems ?? this.syncItems,
+    );
+  }
+
 }
 
 class SyncPausedState extends SyncState {
