@@ -13,7 +13,7 @@ class UIErrorMessage extends StatefulWidget {
     this.message,
     this.color = AppColors.bgDangerSolidFocus,
     this.fontSize = 14,
-    this.fontWeight = FontWeight.w600,
+    this.fontWeight = FontWeight.w500,
   });
 
   @override
