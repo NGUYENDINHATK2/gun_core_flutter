@@ -132,7 +132,7 @@ class _UITextFieldState extends State<UITextField> {
           suffixIcon: widget.obscureText == true
             ? IconButton(
                 icon: Icon(
-                  _obscureText ? Icons.visibility_off : Icons.visibility,
+                  _obscureText ? Icons.visibility_off_outlined : Icons.visibility_outlined,
                   color: AppColors.fgNeutralSubtle,
                 ),
                 onPressed: () {
