@@ -11,6 +11,7 @@ class UISingleSelect<T> extends StatefulWidget {
   final Widget Function({SingleSelectOptionEntity<T>? option})? builderOption;
   final Function(T item)? onSelected;
   final double? height;
+  final bool isDisabled;
   final String? title;
   const UISingleSelect({
     super.key,
@@ -22,6 +23,7 @@ class UISingleSelect<T> extends StatefulWidget {
     this.builderOption,
     this.onSelected,
     this.title,
+    this.isDisabled = false,
   });
 
   @override
@@ -138,7 +140,7 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _showBottomSheet(context);
+        widget.isDisabled ? null : _showBottomSheet(context);
       },
       child: widget.selected != null
           ? widget.builderSelected(widget.selected as T)
