@@ -34,11 +34,10 @@ class MediaHelper {
     return file?.path;
   }
 
-  Future<(String path, int size)?> getFileInfo(AssetEntity entity) async {
+  Future<String> getFileInfo(AssetEntity entity) async {
     final file = await entity.file;
     if (file == null) return null;
-    final size = await file.length();
-    return (file.path, size);
+    return file.path;
   }
 
 
