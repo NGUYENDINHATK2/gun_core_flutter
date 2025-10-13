@@ -12,6 +12,8 @@ class DeviceInfo {
     this.sdkVersion,
     this.physicalRamSize, // Optional field for RAM size in MB
     this.availableRamSize,
+    required this.deviceModelName, // Default value if not provided
+    required this.deviceMachine, // Default value if not provided
   });
 
   final String deviceId;
@@ -23,4 +25,6 @@ class DeviceInfo {
   final String? sdkVersion;
   final int? physicalRamSize; // Optional field for RAM size in MB
   final int? availableRamSize;
+  final String deviceModelName; // Default value if not provided
+  final String deviceMachine;
 }

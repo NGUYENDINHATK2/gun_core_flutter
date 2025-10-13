@@ -29,21 +29,13 @@ class MediaHelper {
     return null;
   }
 
+  static Future<int> getFileSizeV1(File file) async {
+    return await file.length();
+  }
+
   Future<String?> getFilePath(AssetEntity entity) async {
     final file = await entity.file;
     return file?.path;
-  }
-
-  Future<(String path, int size)?> getFileInfo(AssetEntity entity) async {
-    final file = await entity.file;
-    if (file == null) return null;
-    final size = await file.length();
-    return (file.path, size);
-  }
-
-
-  static Future<int> getFileSizeV1(File file) async {
-    return await file.length();
   }
 
   static double bytesToKilobytes(int bytes) {
@@ -122,5 +114,6 @@ class MediaHelper {
         (uri.scheme == 'http' || uri.scheme == 'https') &&
         uri.hasAuthority;
   }
+
 
 }
