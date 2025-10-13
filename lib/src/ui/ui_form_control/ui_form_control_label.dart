@@ -14,7 +14,7 @@ class UIFormControlLabel extends StatefulWidget {
     required this.label,
     this.color = AppColors.fgNeutralEmphasis,
     this.fontSize = 14,
-    this.fontWeight = FontWeight.w600,
+    this.fontWeight = FontWeight.w500,
     this.isRequired = false,
   });
 
