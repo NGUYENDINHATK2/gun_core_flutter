@@ -14,6 +14,7 @@ class DeviceInfo {
     this.availableRamSize,
     required this.deviceModelName, // Default value if not provided
     required this.deviceMachine, // Default value if not provided
+    required this.versionRelease,
   });
 
   final String deviceId;
@@ -27,4 +28,5 @@ class DeviceInfo {
   final int? availableRamSize;
   final String deviceModelName; // Default value if not provided
   final String deviceMachine;
+  final String versionRelease;
 }
