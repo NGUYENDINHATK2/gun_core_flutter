@@ -27,7 +27,7 @@ class UITextField extends StatefulWidget {
   final TextEditingController? controller;
   final TextAlign? textAlign;
   final List<TextInputFormatter>? inputFormatters;
-  final bool? enableInteractiveSelection = true;
+  final bool? enableInteractiveSelection;
   final Iterable<String>? autofillHints;
   final TextInputAction? textInputAction;
   final void Function(String)? onSubmitted;
