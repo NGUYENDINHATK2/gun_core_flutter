@@ -27,6 +27,10 @@ class UITextField extends StatefulWidget {
   final TextEditingController? controller;
   final TextAlign? textAlign;
   final List<TextInputFormatter>? inputFormatters;
+  final bool? enableInteractiveSelection = true;
+  final Iterable<String>? autofillHints;
+  final TextInputAction? textInputAction;
+  final void Function(String)? onSubmitted;
   const UITextField({
     super.key,
     this.initialValue,
@@ -52,6 +56,10 @@ class UITextField extends StatefulWidget {
     this.controller,
     this.textAlign,
     this.inputFormatters,
+    this.autofillHints,
+    this.enableInteractiveSelection,
+    this.textInputAction,
+    this.onSubmitted,
   });
 
   @override
@@ -100,6 +108,10 @@ class _UITextFieldState extends State<UITextField> {
       enabled: widget.isDisabled == false,
       focusNode: widget.focusNode,
       obscureText: _obscureText,
+      enableInteractiveSelection: widget.enableInteractiveSelection ?? true,
+      autofillHints: widget.autofillHints,
+      textInputAction: widget.textInputAction,
+      onFieldSubmitted: widget.onSubmitted,
       keyboardType: widget.keyboardType,
       style: TextStyle(
         fontSize: widget.fontSize ?? 14.sp,
