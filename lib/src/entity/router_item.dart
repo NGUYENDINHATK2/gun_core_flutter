@@ -11,6 +11,8 @@ class RouterItemEntity {
   final List<String>? routerActive;
   final Widget? iconActive;
   final Widget? iconInactive;
+  final String? iconActivePath;
+  final String? iconInactivePath;
 
-  RouterItemEntity({required this.name, required this.type, this.children, this.icon, this.routeName, this.routerActive, this.iconActive, this.iconInactive});
+  RouterItemEntity({required this.name, required this.type, this.children, this.icon, this.routeName, this.routerActive, this.iconActive, this.iconInactive, this.iconActivePath, this.iconInactivePath});
 }
