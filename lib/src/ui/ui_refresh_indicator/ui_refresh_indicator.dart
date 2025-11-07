@@ -45,7 +45,19 @@ class _UIRefreshIndicatorState extends State<UIRefreshIndicator> {
       displacement: widget.displacement?.h ?? 60.h,
       edgeOffset: widget.edgeOffset?.h ?? 20.h,
       child: widget.child,
-      notificationPredicate: !widget.isDisabled ? (_) => true : (_) => false,
+      notificationPredicate: (widget.isDisabled == true)
+          ? (ScrollNotification notification) {
+              return false;
+            }
+          : (ScrollNotification notification) {
+              if (widget.shouldShowOnEdge == true) {
+                return true;
+              }
+              if (widget.shouldShow == true) {
+                return notification.metrics.extentBefore == 0.0;
+              }
+              return false;
+            },
     );
   }
 }
