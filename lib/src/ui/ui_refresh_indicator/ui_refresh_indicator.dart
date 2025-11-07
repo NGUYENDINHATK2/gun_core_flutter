@@ -13,6 +13,7 @@ class UIRefreshIndicator extends StatefulWidget {
   final RefreshIndicatorTriggerMode? triggerMode;
   final bool? shouldShow;
   final bool? shouldShowOnEdge;
+  final bool? isDisabled;
   const UIRefreshIndicator({
     super.key,
     required this.onRefresh,
@@ -25,6 +26,7 @@ class UIRefreshIndicator extends StatefulWidget {
     this.triggerMode = RefreshIndicatorTriggerMode.onEdge,
     this.shouldShow = true,
     this.shouldShowOnEdge = true,
+    this.isDisabled = false,
   });
 
   @override
@@ -43,6 +45,7 @@ class _UIRefreshIndicatorState extends State<UIRefreshIndicator> {
       displacement: widget.displacement?.h ?? 60.h,
       edgeOffset: widget.edgeOffset?.h ?? 20.h,
       child: widget.child,
+      notificationPredicate: !widget.isDisabled ? (_) => true : (_) => false,
     );
   }
 }
