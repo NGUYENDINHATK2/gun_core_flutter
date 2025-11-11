@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:gun_core_flutter/gun_core_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -61,12 +62,18 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
   void didUpdateWidget(covariant UISingleSelect<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (oldWidget.options != widget.options) {
-      _optionsNotifier.value = List<T>.from(widget.options ?? []);
+    if (!listEquals(oldWidget.options, widget.options)) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        _optionsNotifier.value = List<T>.from(widget.options ?? []);
+      });
     }
 
     if (oldWidget.selected != widget.selected) {
-      _selectedNotifier.value = widget.selected;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        _selectedNotifier.value = widget.selected;
+      });
     }
   }
 
@@ -79,7 +86,7 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
   }
 
   void _showBottomSheet(BuildContext context) {
-    _didScrollToSelected = false;
+    _didScrollToSelected = false; 
     _itemKeys.clear();
 
     showCupertinoModalBottomSheet(
@@ -92,7 +99,7 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
             child: Container(
               constraints: BoxConstraints(
                 maxHeight:
-                widget.height ?? MediaQuery.of(sheetContext).size.height * 0.5,
+                    widget.height ?? MediaQuery.of(sheetContext).size.height * 0.5,
               ),
               color: Colors.white,
               child: Column(
@@ -164,20 +171,20 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
                                   },
                                   child: widget.builderOption != null
                                       ? widget.builderOption!(
-                                    option: SingleSelectOptionEntity<T>(
-                                      item: item,
-                                      isSelected: isSelected,
-                                    ),
-                                  )
+                                          option: SingleSelectOptionEntity<T>(
+                                            item: item,
+                                            isSelected: isSelected,
+                                          ),
+                                        )
                                       : ListTile(
-                                    selected: isSelected,
-                                    title: UIText(
-                                      text: item.toString(),
-                                    ),
-                                    trailing: isSelected
-                                        ? const Icon(Icons.check)
-                                        : null,
-                                  ),
+                                          selected: isSelected,
+                                          title: UIText(
+                                            text: item.toString(),
+                                          ),
+                                          trailing: isSelected
+                                              ? const Icon(Icons.check)
+                                              : null,
+                                        ),
                                 );
                               },
                             );
@@ -211,15 +218,17 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
     _didScrollToSelected = true;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!_scrollController.hasClients) return;
+
       final key = _itemKeys[selectedIndex];
       final ctx = key?.currentContext;
-      if (ctx == null || !_scrollController.hasClients) return;
+      if (ctx == null) return;
 
       try {
         final box = ctx.findRenderObject() as RenderBox?;
         final listBox = _scrollController
-            .position.context.storageContext
-            .findRenderObject() as RenderBox?;
+                .position.context.storageContext
+                .findRenderObject() as RenderBox?;
 
         if (box == null || listBox == null) return;
 
@@ -233,7 +242,6 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
           curve: Curves.fastOutSlowIn,
         );
       } catch (_) {
-        // tránh crash nếu RenderBox chưa sẵn sàng
       }
     });
   }
@@ -252,22 +260,22 @@ class _UISingleSelectState<T> extends State<UISingleSelect<T>> {
       child: selected != null
           ? widget.builderSelected(selected)
           : widget.noSelectedWidget ??
-          Container(
-            padding: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Center(
-              child: UIText(
-                text: "Select an option",
-                textStyle: TextStyle(
-                  fontSize: 14.sp,
-                  color: Colors.grey[600],
+              Container(
+                padding: const EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Center(
+                  child: UIText(
+                    text: "Select an option",
+                    textStyle: TextStyle(
+                      fontSize: 14.sp,
+                      color: Colors.grey[600],
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
     );
   }
 }
